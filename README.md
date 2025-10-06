@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# 🎓 Full-Stack Quiz Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a complete, authenticated, and multi-quiz application built using a modern full-stack architecture. Users can log in, select from a list of available quizzes, track their answers with a timer, submit their scores, and review their past results. Administrators have special access to an Admin Panel for creating and adding new quizzes to the database.
 
-## Available Scripts
+## ✨ Core Features
 
-In the project directory, you can run:
+* **User Authentication:** Secure login/registration with separate roles (`user` and `admin`).
+* **Role-Based Access Control (RBAC):** Only administrators can access the "Add Quiz" dashboard via JWT token verification.
+* **Multi-Quiz Support:** Backend manages quizzes via separate database tables.
+* **Result Persistence:** Stores user scores in local storage, allowing logged-in users to see **"View Results"** instead of "Start Quiz" if they've already completed it.
+* **Timer (Bonus):** Quizzes include a countdown timer that forces submission upon reaching zero.
+* **Detailed Scoring:** The results page displays the user's score and provides per-question feedback.
+* **Modern UI:** Quiz selection is presented using side-by-side cards.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 💻 Technology Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+| Component | Technology | Description |
+| :--- | :--- | :--- |
+| **Frontend** | **React** (CRA, Hooks, Context API) | Handles UI, routing, state management, and interaction. |
+| **Backend** | **Flask** (Python) | Lightweight API server for handling business logic. |
+| **Database** | **SQLite** | Simple, file-based database for persistent storage. |
+| **Auth** | **Flask-JWT-Extended** | Secure, token-based authentication. |
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Setup and Installation
 
-### `npm run build`
+Follow these steps to get the application running locally.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Backend Setup (Flask)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1.  Navigate into the `backend` directory.
+    ```bash
+    cd backend
+    ```
+2.  Install Python dependencies:
+    ```bash
+    pip install Flask Flask-CORS Flask-JWT-Extended werkzeug
+    ```
+3.  Run the Flask application:
+    ```bash
+    python app.py
+    ```
+    The server should start on **`http://localhost:5000`**. The `quiz.db` file will be created and populated with default users/quizzes.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. Frontend Setup (React)
 
-### `npm run eject`
+1.  Navigate into the `frontend` directory.
+    ```bash
+    cd frontend
+    ```
+2.  Install Node dependencies:
+    ```bash
+    npm install
+    ```
+3.  Start the React development server:
+    ```bash
+    npm start
+    ```
+    The client should open automatically, usually on **`http://localhost:3000`**.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🔑 Default Credentials
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The backend automatically creates these users for testing:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+| Role | Username | Password | Access |
+| :--- | :--- | :--- | :--- |
+| **Admin** | `admin` | `adminpass` | Full access, including **Admin Dashboard** for adding quizzes. |
+| **User** | `testuser` | `userpass` | Quiz access and score tracking. |
 
-## Learn More
+### 1. Project Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Ensure your file structure separates the backend and frontend components:
